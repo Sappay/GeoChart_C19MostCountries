@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawCountriesMap);
+
+      function drawCountriesMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Confirmed Cases', 'Deaths'],
+          ['United States', 1040488, 60999],
+          ['Spain', 236899, 24275],
+          ['Italy', 203591, 27682],
+          ['United Kingdom', 165221, 26097],
+          ['France', 165093, 24087],
+          ['Germany', 161539, 6467],
+		  ['Turkey', 117589, 3081],
+		  ['Russia', 99399, 972],
+		  ['Iran', 93657, 5957],
+		  ['Mainland China', 82862,	4633],
+		  ['Brazil', 79685,	5513],
+		  ['Canada', 52865, 3155],
+		  ['Belgium', 47859, 7501]
+        ]);
+
+        
+  		var options = {
+			backgroundColor: '#81d4fa',
+          	datalessRegionColor: '#f8bbd0',
+          	defaultColor: '#f5f5f5',
+			region: 'world',
+			colorAxis: {colors: ['green', 'blue', 'brown', 'purple', 'grey', '#11ddae', 'violet', 'red']},};
+
+  		var chart = new google.visualization.GeoChart(document.getElementById('countries_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="countries_div" style="width: 100%; height: 100%;"></div>
+  </body>
+</html>
